@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen Rating App</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1>🍜 Ramen Rating App</h1>
+
+    </header>
+    <section>
+        <section id ="ramen-menu">
+
+            <img src="./images/gyukotsu.jpg" alt="Gyukotsu ramen" srcset="">
+            <img src="./images/kojiro.jpg" alt="Kojiro Ramen" srcset="">
+            <img src="./images/korean spicy beef noodle ramen" alt="Korean spicy beef noodle ramen" srcset="">
+            <img src="./images/naruto.jpg" alt="Naruto ramen" srcset="">
+            <img src="./images/nirvana.jpg" alt="Nirvana ramen" srcset="">
+            <img src="./images/shoyu.jpg" alt="shoyu ramen" srcset="">
+
+
+        </section>
+
+        <section id="ramen-detail">
+            <h2 id="ramen-name"></h2>
+            <p id="ramen-restaurant"></p>
+            <img id="ramen-image" src="./images/Ichiraku ramen.jpeg" alt="Ramen Image">
+            <p>Rating: <span id="ramen-rating"></span></p>
+            <p>Comment: <span id="ramen-comment"></span></p>
+        </section>
+        
+        <section>
+            <form id="new-ramen-form">
+                <input type="text" id="name" placeholder="Ramen Name" required>
+                <input type="text" id="restaurant" placeholder="Restaurant Name" required>
+                <input type="url" id="image" placeholder="Image URL" required>
+                <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5" required>
+                <input type="text" id="comment" placeholder="Your Comment" required>
+                <button type="submit">Add Ramen</button>
+            </form>
+        </section>
+
+    </main>
+    <footer> Copyright @ 2025</footer>
+</body>
+<script src="index.js"></script>
+</html>
