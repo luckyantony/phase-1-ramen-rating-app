@@ -1,35 +1,65 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-}
+    background-color: dimgray;
+ }
 
-#ramen-menu img {
+ header {
+    background-color: black;
+    color: white;
+ }
+ 
+ #ramen-menu img {
     width: 200px;
     height: 200px;
     margin: 10px;
     cursor: pointer;
-}
-
-#ramen-detail img {
+ }
+ 
+ #ramen-detail img {
     width: 300px;
     height: 200px;
-}
-
-form {
-    margin-top: 20px;
-}
-
-input, button {
+ }
+ 
+ form {
+    width: 300px;
+    margin: 20px auto; 
+    display: flex;
+    flex-direction: column;
+    border: 2px solid wheat;
+    padding: 20px;
+    border-radius: 10px;
+ }
+ 
+ input, button {
     padding: 10px;
     margin: 5px;
-}
-
-footer{
+    font-size: 16px;
+    border-radius: 5px;
+ }
+ 
+ button {
+    background-color: firebrick;
+    color: white;
+    border: none;
+    cursor: pointer;
+ }
+ 
+ button:hover {
+    background-color: darkred;
+ }
+ 
+ #delete-btn {
+    background-color: red;
+    margin-top: 10px;
+ }
+ 
+ footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
     color: white;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
-}
+ }
