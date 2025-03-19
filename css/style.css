@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: dimgray;
+    background-color: rgba(61, 58, 59, 0.993);
  }
 
  header {
@@ -26,7 +26,7 @@ body {
     margin: 20px auto; 
     display: flex;
     flex-direction: column;
-    border: 2px solid wheat;
+    border: 2px solid rgb(76, 199, 19);
     padding: 20px;
     border-radius: 10px;
  }
@@ -39,7 +39,7 @@ body {
  }
  
  button {
-    background-color: firebrick;
+    background-color: rgb(14, 13, 13);
     color: white;
     border: none;
     cursor: pointer;
@@ -50,14 +50,14 @@ body {
  }
  
  #delete-btn {
-    background-color: red;
+    background-color: rgb(250, 120, 120);
     margin-top: 10px;
  }
  
  footer {
     text-align: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #050505;
     color: white;
     position: fixed;
     bottom: 0px;

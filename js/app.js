@@ -1,3 +1,4 @@
+// Wait for the HTML file to load first before loading JS
 document.addEventListener("DOMContentLoaded", main);
 
 const ramens = [
@@ -11,23 +12,26 @@ const ramens = [
    { id: 8, name: "Nirvana Ramen", restaurant: "Nirvana", image: "./images/nirvana.jpg", rating: 5, comment: "Awesome!" }
 ];
 
+//Create a function that display all ramen images in the section with if ramen-menu
 function displayRamens() {
    const menu = document.getElementById("ramen-menu");
-   menu.innerHTML = "";
-
+   menu.innerHTML = ""; // This clears menu before adding the images
+    // This loops through each ramen object and create an image element for it
    ramens.forEach(ramen => {
        const img = document.createElement("img");
        img.src = ramen.image;
        img.alt = ramen.name;
-       img.addEventListener("click", () => displayRamenDetails(ramen));
-       menu.appendChild(img);
+       img.addEventListener("click", () => displayRamenDetails(ramen)); // Show details when clicked
+       menu.appendChild(img); // Add image to the menu
    });
 
+    // Display the details of the first ramen by default when page loads
    if (ramens.length > 0) {
        displayRamenDetails(ramens[0]);
    }
 }
 
+// This function displays the details of the selected ramen in section with id ramen-detail
 function displayRamenDetails(ramen) {
    document.getElementById("ramen-name").textContent = ramen.name;
    document.getElementById("ramen-restaurant").textContent = ramen.restaurant;
@@ -38,13 +42,16 @@ function displayRamenDetails(ramen) {
    document.getElementById("edit-rating").value = ramen.rating;
    document.getElementById("edit-comment").value = ramen.comment;
 
-   document.getElementById("delete-btn").onclick = () => deleteRamen(ramen.id);
+   document.getElementById("delete-btn").onclick = () => deleteRamen(ramen.id); // Add a click event to the delete button
 }
 
+// This function handles submission to the new ramen form
 function addSubmitListener() {
    const form = document.getElementById("new-ramen-form");
    form.addEventListener("submit", function(event) {
-       event.preventDefault();
+       event.preventDefault(); // This prevents the form from refreshing the page
+
+       // Creates a new ramen object from the form inputs
        const newRamen = {
            id: ramens.length + 1,
            name: document.getElementById("name").value,
@@ -53,18 +60,22 @@ function addSubmitListener() {
            rating: document.getElementById("rating").value,
            comment: document.getElementById("comment").value
        };
-       ramens.push(newRamen);
-       displayRamens();
-       form.reset();
+       ramens.push(newRamen); // Add new ramen to array
+       displayRamens(); // Refreshes the ramen menu to show the new ramen
+       form.reset();// This clears the input
    });
 }
 
+// Function to handle the submission of the edit form
 function addEditListener() {
    const editForm = document.getElementById("edit-form");
    editForm.addEventListener("submit", function(event) {
        event.preventDefault();
+
+       // This finds the current displayed ramen in array
        const selectedRamen = ramens.find(r => r.name === document.getElementById("ramen-name").textContent);
        if (selectedRamen) {
+        // Updates ramen rating and comment with values from the edit form
            selectedRamen.rating = document.getElementById("edit-rating").value;
            selectedRamen.comment = document.getElementById("edit-comment").value;
            displayRamenDetails(selectedRamen);
@@ -72,16 +83,18 @@ function addEditListener() {
    });
 }
 
+//This function deletes a ramen form from the array and updates the display
 function deleteRamen(id) {
    const index = ramens.findIndex(ramen => ramen.id === id);
    if (index !== -1) {
-       ramens.splice(index, 1);
-       displayRamens();
+       ramens.splice(index, 1); // Remove ramen from array
+       displayRamens(); // Refreshen the ramen menu
    }
 }
 
+// Main function that initializes the app
 function main() {
-   displayRamens();
-   addSubmitListener();
-   addEditListener();
+   displayRamens(); // Display all ramens
+   addSubmitListener(); // Add listeners for the new ramen form
+   addEditListener(); // Addd listener for the edit form
 }
