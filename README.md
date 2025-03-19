@@ -15,8 +15,7 @@ A simple web app for rating and reviewing ramen dishes. Add, edit, and delete ra
 
 ## How to Use
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/ramen-rating-app.git
+   
 Open index.html in your browser.
 
 Start rating ramen!
