@@ -68,16 +68,33 @@ function addSubmitListener() {
 
 // Function to handle the submission of the edit form
 function addEditListener() {
+   // Get the edit form
    const editForm = document.getElementById("edit-form");
-   editForm.addEventListener("submit", function(event) {
-       event.preventDefault();
 
-       // This finds the current displayed ramen in array
-       const selectedRamen = ramens.find(r => r.name === document.getElementById("ramen-name").textContent);
+   // Add a submit event listener to the form
+   editForm.addEventListener("submit", function(event) {
+       event.preventDefault(); // This stops the form from reloading
+
+       // Get the name of the currently displayed ramen
+       const ramenName = document.getElementById("ramen-name").textContent;
+
+       // Find the ramen in the array that matches the name
+       let selectedRamen; 
+       for (let i = 0; i < ramens.length; i++) {
+           if (ramens[i].name === ramenName) {
+               selectedRamen = ramens[i];
+               break; // Stop searching once we find the ramen
+           }
+       }
+
+       // If we found the ramen, update its rating and comment
        if (selectedRamen) {
-        // Updates ramen rating and comment with values from the edit form
-           selectedRamen.rating = document.getElementById("edit-rating").value;
-           selectedRamen.comment = document.getElementById("edit-comment").value;
+           const newRating = document.getElementById("edit-rating").value;
+           const newComment = document.getElementById("edit-comment").value;
+
+           selectedRamen.rating = newRating;
+           selectedRamen.comment = newComment;
+
            displayRamenDetails(selectedRamen);
        }
    });
@@ -85,11 +102,12 @@ function addEditListener() {
 
 //This function deletes a ramen form from the array and updates the display
 function deleteRamen(id) {
-   const index = ramens.findIndex(ramen => ramen.id === id);
-   if (index !== -1) {
-       ramens.splice(index, 1); // Remove ramen from array
-       displayRamens(); // Refreshen the ramen menu
-   }
+   ramens.forEach((ramen, index) => {
+       if (ramen.id === id) {
+           ramens.splice(index, 1); // Remove ramen from array
+       }
+   });
+   displayRamens(); // Refresh the ramen menu
 }
 
 // Main function that initializes the app
